@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Auth from './Auth';
 
 export type tokenCredential = {
@@ -7,24 +6,20 @@ export type tokenCredential = {
 }
 
 export interface IUseAuthProvider{
-    token: null|string,
     signIn: (credentials:tokenCredential) => void,
     signOut: () => void
 }
 
 const useAuthProvider = ():IUseAuthProvider => {
-    const [token, setToken] = useState<string|null>(null);
-
     const signIn = ( credentials: tokenCredential ) => {
-        Auth.signIn( credentials, setToken );
+        Auth.signIn( credentials);
     }
 
     const signOut = () => {
-        Auth.signOut( () => setToken(null) );
+        Auth.signOut( );
     }
 
     return {
-        token,
         signIn,
         signOut
     }

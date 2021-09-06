@@ -9,7 +9,7 @@ const LoginScreen: React.FC<ILoginScreenProps> = ( {history} ) => {
 
         const auth = useAuth();
         const handleLogin = () => {
-            if(auth?.token === null){
+            if(!localStorage.token){
                 auth?.signIn({ email: "diego@gmail.com", password: "diego" });
             }else{
                 auth?.signOut();
@@ -18,9 +18,9 @@ const LoginScreen: React.FC<ILoginScreenProps> = ( {history} ) => {
         };
     return (
         <div className="container">
-            <h1>{JSON.stringify(auth?.token)}</h1>
+            <h1>{JSON.stringify(localStorage.token)}</h1>
             <button onClick={handleLogin} className="btn btn-primary">
-                {auth?.token === null 
+                {!localStorage.token
                     ? 'Login'
                     : 'Logout'
                 }

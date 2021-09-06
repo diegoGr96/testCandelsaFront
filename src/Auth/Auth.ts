@@ -1,15 +1,12 @@
 import { tokenCredential } from "./useAuthProvider";
 
 const Auth = {
-    signIn(credentials: tokenCredential, state: React.Dispatch<React.SetStateAction<string | null>>) {
-        setTimeout( () => {
-            state(credentials.email);
-        }, 100);
+    signIn(credentials: tokenCredential) {
+        localStorage.token = credentials.email;
     },
-    signOut(state: React.Dispatch<React.SetStateAction<string | null>>) {
-        setTimeout(() => {
-            state(null);
-        }, 100);
+    signOut() {
+        localStorage.removeItem('token');
+        window.location.href = '/';
     },
 }
 

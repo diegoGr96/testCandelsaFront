@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useAuth from '../Auth/useAuth';
+import PrivateRoutesList from './PrivateRoutesList';
 
 export type INavBarProps = {
     
 }
 
 const NavBar: React.FC<INavBarProps> = () => {
-    const auth = useAuth();
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -35,19 +34,19 @@ const NavBar: React.FC<INavBarProps> = () => {
                             Public Page
                         </Link>
                     </li>
-                    <li className="nav-item">
-                    {auth?.token !== null &&
-                        <Link to="/private-page" className="nav-link">
-                            Private Page
-                        </Link>
+                    {localStorage.token &&
+                        // <Link to="/private-page" className="nav-link">
+                        //     Private Page
+                        // </Link>
+                        <PrivateRoutesList />
                     }
-                    </li>
                     <li className="nav-item">
-                    {auth?.token === null ? 
+                    {!localStorage.token ? 
                             <Link to="/login" className="nav-link">
                                 Login
                             </Link>
                         : 
+                        
                             <Link to="/logout" className="nav-link">
                                 Logout
                             </Link>
@@ -55,7 +54,7 @@ const NavBar: React.FC<INavBarProps> = () => {
                     </li>
                 </ul>
             </div>
-            <h1>{auth?.token}</h1>
+            <h1>{localStorage.token}</h1>
         </nav>
     );
 }
