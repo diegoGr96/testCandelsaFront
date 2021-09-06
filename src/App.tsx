@@ -1,12 +1,21 @@
-import React from 'react';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import AuthProvider from "./Auth/AuthProvider";
+import { LoginScreen } from "./components/LoginScreen";
+import DashboardRoutes from './components/DashboardRoutes';
+import { LogoutScreen } from "./components/LogoutScreen";
 
 function App() {
   return (
-    <div className="container animate__animated animate__bounce">
-      <h1>Candelsa</h1>
-      <button className="btn btn-primary">Hello</button>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" exact component={LoginScreen} />
+          <Route path="/logout" exact component={LogoutScreen} />
+          <Route path="/" component={DashboardRoutes} />
+        </Switch>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
