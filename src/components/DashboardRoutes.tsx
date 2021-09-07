@@ -10,23 +10,25 @@ import { PublicPage } from "./PublicPage";
 //      path: string
 //  };
 
-const DashboardRoutes = ( ) =>  {
+const DashboardRoutes = () => {
     return (
         <>
             <NavBar />
-            <Switch>
-                {/* Public Routes */}
-                <Route path="/home" exact component={Home} />
-                {/* <Route path="/login" exact component={LoginScreen} /> */}
-                <Route path="/public-page" exact component={PublicPage} />
-                
-                {/* Private Routes */}
-                <PrivateRoute path="/private-page" exact component={PrivatePage} />
-                <PrivateRoute path="/private-page2" exact component={PrivatePage2} />
+            <div className="container mt-5">
+                <Switch>
+                    {/* Public Routes */}
+                    <Route path="/home" exact component={Home} />
+                    {/* <Route path="/login" exact component={LoginScreen} /> */}
+                    <Route path="/public-page" exact component={PublicPage} />
 
-                {/* Default */}
-                <Redirect to="/home" />
-            </Switch>
+                    {/* Private Routes */}
+                    <PrivateRoute path="/private-page" exact component={PrivatePage} />
+                    <PrivateRoute path="/private-page2" exact component={PrivatePage2} />
+
+                    {/* Default */}
+                    <Redirect to="/home" />
+                </Switch>
+            </div>
         </>
     );
 }
