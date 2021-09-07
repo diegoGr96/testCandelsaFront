@@ -6,13 +6,13 @@ export type tokenCredential = {
 }
 
 export interface IUseAuthProvider{
-    signIn: (credentials:tokenCredential) => void,
+    signIn: (state: React.ComponentState, credentials:tokenCredential) => void,
     signOut: () => void
 }
 
 const useAuthProvider = ():IUseAuthProvider => {
-    const signIn = ( credentials: tokenCredential ) => {
-        Auth.signIn( credentials);
+    const signIn = (state: React.ComponentState, credentials: tokenCredential ) => {
+        Auth.signIn(state, credentials);
     }
 
     const signOut = () => {

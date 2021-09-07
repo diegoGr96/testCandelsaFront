@@ -7,15 +7,17 @@ import { LogoutScreen } from "./components/LogoutScreen";
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/login" exact component={LoginScreen} />
-          <Route path="/logout" exact component={LogoutScreen} />
-          <Route path="/" component={DashboardRoutes} />
-        </Switch>
-      </BrowserRouter>
-    </AuthProvider>
+    <div className="main">
+      <AuthProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/login" exact component={LoginScreen} />
+            <Route path="/logout" exact component={LogoutScreen} />
+            <Route path="/" component={DashboardRoutes} />
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
+    </div>
   );
 }
 
