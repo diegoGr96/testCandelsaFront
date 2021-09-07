@@ -7,6 +7,9 @@ import { createFetch } from "../../helpers/createFetch";
 import { apiURL } from "../../env/env";
 import { FaHeart } from "react-icons/fa";
 import { IconContext } from "react-icons"
+import { styledHeartOwner } from "../../assets/iconsstyles/iconsStyles";
+import { styledHeartNoLike } from "../../assets/iconsstyles/iconsStyles";
+import { styledHeartLike } from "../../assets/iconsstyles/iconsStyles";
 
 interface PostScreenProps {
     postId: string
@@ -19,22 +22,10 @@ interface IPostFetch {
 
 const PostScreen: React.FC<PostScreenProps> = () => {
     const history = useHistory();
-
-
     const { postId } = useParams<PostScreenProps>();
 
     const [loading, setLoading] = useState<boolean>(false);
     const [post, setPost] = useState<PostProps | undefined>();
-
-    const styledHeartLike = {
-        fontSize: '30px',
-        color: "rgb(255, 0, 50)"
-    };
-
-    const styledHeartNoLike = {
-        fontSize: '30px',
-        color: "rgb(0, 0, 0)"
-    };
 
     useEffect(() => {
         setLoading(true);

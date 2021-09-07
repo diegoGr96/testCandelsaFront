@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { PostProps } from './PostList';
 import { FaHeart } from "react-icons/fa";
-import { IconContext } from "react-icons"
+import { IconContext } from "react-icons";
+import { styledHeartOwner } from "../../assets/iconsstyles/iconsStyles";
+import { styledHeartNoLike } from "../../assets/iconsstyles/iconsStyles";
+import { styledHeartLike } from "../../assets/iconsstyles/iconsStyles";
 
 interface PostListItemProps {
     post: PostProps
@@ -10,15 +13,6 @@ interface PostListItemProps {
 
 const PostListItem: React.FC<PostListItemProps> = ({ post }) => {
     const { id, user_id, title, body, likes } = post;
-    const styledHeartLike = {
-        fontSize: '30px',
-        color: "rgb(255, 0, 50)"
-    };
-
-    const styledHeartNoLike = {
-        fontSize: '30px',
-        color: "rgb(0, 0, 0)"
-    };
 
     return (
 
