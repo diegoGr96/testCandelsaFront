@@ -15,6 +15,13 @@
   width: 100%;
 }
 
+.navbar-light{
+  background-color: #71c4ff !important;
+}
+
+.navbar a{
+}
+
 .form__login{
   background-color: #fff;
   border: 1.5px solid #d9d9d9;
@@ -24,4 +31,12 @@
 
 .logo__container{
   background-color: #069de5;
+}
+
+.postList{
+  gap: 5px;
+}
+
+.postList__postItem{
+  padding: 0;
 }
