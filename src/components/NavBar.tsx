@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PrivateRoutesList from './PrivateRoutesList';
+import PrivateRoutesList from './routers/PrivateRoutesList';
 
 export type INavBarProps = {}
 

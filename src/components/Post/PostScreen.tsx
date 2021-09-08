@@ -92,7 +92,7 @@ const PostScreen: React.FC<PostScreenProps> = () => {
                     </div>
                     {userIdToken === post?.user_id &&
                         <div className="post__controllers mt-3">
-                            <Link 
+                            <Link
                                 to={`/post/${post.id}/edit`}
                                 className="btn btn-primary col-md-1 mr-5">
                                 Edit

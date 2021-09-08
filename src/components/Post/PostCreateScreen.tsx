@@ -1,49 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import React, { useEffect } from "react";
 import { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { createFetch } from "../../helpers/createFetch";
 import { apiURL } from "../../env/env";
 import jwt_decode from "jwt-decode";
 import { IToken } from "../../interfaces/interfaces";
 
-interface PostScreenProps {
+interface PostCreateScreenProps {
     postId: string
 }
 
-const PostEditScreen: React.FC<PostScreenProps> = () => {
+const PostCreateScreen: React.FC<PostCreateScreenProps> = () => {
     const history = useHistory();
-    const { postId } = useParams<PostScreenProps>();
 
-    const [loading, setLoading] = useState<boolean>(false);
-    const [postUpdated, setPostUpdated] = useState<boolean>(false);
-
+    const [postCreated, setPostCreated] = useState<boolean>(false);
     const [titleInputValue, setTitleInputValue] = useState<string>('');
     const [bodyInputValue, setBodyInputValue] = useState<string>('');
+    const [userIdToken, setUserIdToken] = useState<number | null>(null);
 
 
     useEffect(() => {
         if (localStorage.getItem('token') === null) history.replace('/');
 
         const token: IToken = jwt_decode(localStorage.token);
-                
-        setLoading(true);
-
-        const resultFetch = createFetch(apiURL + `posts/${postId}`, 'GET', false);
-        resultFetch
-            .then(response => {
-                if (!response.ok) {
-                    history.goBack();
-                }
-                return response.json()
-            })
-            .then((data) => {
-                if (token.sub !== data.user_id) history.replace('/');
-                console.log(data);
-                setLoading(false);
-                setTitleInputValue(data.title);
-                setBodyInputValue(data.body);
-            });
+        setUserIdToken(token.sub);
     }, []);
 
     const handleSubmit = (e: { preventDefault: () => void; }): boolean => {
@@ -51,20 +33,18 @@ const PostEditScreen: React.FC<PostScreenProps> = () => {
 
         if (titleInputValue.trim().length === 0 || bodyInputValue.trim().length === 0)
             return false;
-            
-        setLoading(true);
 
         const params = {
+            userId: userIdToken,
             title: titleInputValue,
             body: bodyInputValue
         };
 
-        const resultFetchUpdate = createFetch(apiURL + `posts/${postId}`, 'PUT', true, params);
-        resultFetchUpdate
+        const resultFetchCreate = createFetch(apiURL + `posts`, 'POST', true, params);
+        resultFetchCreate
             .then(response => {
-                setLoading(false);
                 if (response.ok) {
-                    setPostUpdated(true);
+                    setPostCreated(true);
                     setTimeout(() => {
                         history.replace('/');
                     }, 1250);
@@ -79,12 +59,8 @@ const PostEditScreen: React.FC<PostScreenProps> = () => {
 
     return (
         <>
-            {loading &&
-                <div className="mt-5 alert alert-info" role="alert">
-                    Loading...
-                </div>
-            }
-            <form 
+            <h1 className="mb-5">New Post</h1>
+            <form
                 className="animate__animated animate__bounceInUp"
                 onSubmit={handleSubmit}
             >
@@ -95,33 +71,33 @@ const PostEditScreen: React.FC<PostScreenProps> = () => {
                         className="form-control"
                         placeholder="My post"
                         value={titleInputValue}
-                        onChange={(e) => setTitleInputValue(e.target.value)}/>
+                        onChange={(e) => setTitleInputValue(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Body</label>
                     <textarea
                         className="form-control"
-                        id="exampleFormControlTextarea1" 
+                        id="exampleFormControlTextarea1"
                         rows={10}
                         value={bodyInputValue}
                         onChange={(e) => setBodyInputValue(e.target.value)}>
-                        </textarea>
+                    </textarea>
                 </div>
                 <button type="submit" className="btn btn-primary mr-5 mb-3 col-md-2">Save Changes</button>
-                <button 
+                <button
                     className="btn btn-secondary mb-3 col-md-2"
-                    onClick={handleBackButton}
-                    >
-                        Go back
+                    onClick={handleBackButton}>
+                    Go back
                 </button>
             </form>
-            {postUpdated &&
+
+            {postCreated &&
                 <div className="mt-5 alert alert-warning" role="alert">
-                    Post successfully updated.
+                    Post successfully created.
                 </div>
             }
         </>
     );
 }
 
-export default PostEditScreen;
+export default PostCreateScreen;
