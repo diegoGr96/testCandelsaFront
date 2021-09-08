@@ -3,7 +3,6 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { Home } from "../Home";
 import { NavBar } from "../NavBar";
 import PostScreen from "../Post/PostScreen";
-import { PublicPage } from "../PublicPage";
 
 //  type DashboardRoutesProps = {
 //      path: string
@@ -18,7 +17,6 @@ const DashboardRoutes = () => {
                     {/* Public Routes */}
                     <Route path="/home" exact component={Home} />
                     <Route path="/post/:postId" component={PostScreen} />
-                    <Route path="/public-page" exact component={PublicPage} />
 
                     {/* Private Routes */}
                     <Route path='/' component={PrivateRoutes} />

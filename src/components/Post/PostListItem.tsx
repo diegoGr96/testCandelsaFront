@@ -1,9 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
-import { IconContext } from "react-icons";
-import { styledHeartNoLike } from "../../assets/iconsstyles/iconsStyles";
-import { styledHeartLike } from "../../assets/iconsstyles/iconsStyles";
 import { PostProps } from "../../interfaces/interfaces";
 import Like from "./Like";
 

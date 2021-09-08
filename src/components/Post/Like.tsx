@@ -25,7 +25,6 @@ interface ILikeResultFetchProps {
 
 const Like: React.FC<LikeProps> = ({ postId, likes }) => {
 
-    const [likeStatus, setLikeStatus] = useState<boolean>(false);
     const [userIdToken, setUserIdToken] = useState<number | null>(null);
     const [currentStyle, setCurrentStyle] = useState(styledHeartNoLike);
     const [canSendLike, setCanSendLike] = useState<boolean>(false);

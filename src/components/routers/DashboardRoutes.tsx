@@ -3,7 +3,6 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { Home } from "../Home";
 import { NavBar } from "../NavBar";
 import PostScreen from "../Post/PostScreen";
-import { PublicPage } from "../PublicPage";
 import PostEditScreen from '../Post/PostEditScreen';
 import PostCreateScreen from '../Post/PostCreateScreen';
 import MyPostsScreen from "../Post/MyPostsScreen";
@@ -27,7 +26,6 @@ const DashboardRoutes = () => {
                     {/* Public Routes */}
                     <Route path="/home" exact component={Home} />
                     <Route path="/post/:postId" exact component={PostScreen} />
-                    <Route path="/public-page" exact component={PublicPage} />
 
                     {/* Default */}
                     <Redirect to="/home" />
