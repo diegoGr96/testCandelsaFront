@@ -3,16 +3,10 @@ import { createFetch } from '../../helpers/createFetch';
 import { apiURL } from '../../env/env';
 import PostListItem from './PostListItem';
 import PostSearchForm from './PostSearchForm';
+import { PostProps } from '../../interfaces/interfaces';
 
 
 interface PostListProps {}
-export interface PostProps {
-    id: number,
-    user_id: number,
-    title: string,
-    body: string,
-    likes: number
-}
 
 const PostList: React.FC<PostListProps> = () => {
 

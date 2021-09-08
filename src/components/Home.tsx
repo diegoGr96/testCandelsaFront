@@ -1,7 +1,4 @@
 import React from "react";
-import { useState, useEffect } from 'react';
-import { createFetch } from "../helpers/createFetch";
-import { apiURL } from '../env/env';
 import PostList from "./Post/PostList";
 
 export type HomeProps = {};

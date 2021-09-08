@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./Auth/AuthProvider";
 import { LoginScreen } from "./components/LoginScreen";
-import DashboardRoutes from './components/DashboardRoutes';
+import DashboardRoutes from './components/routers/DashboardRoutes';
 import { LogoutScreen } from "./components/LogoutScreen";
 
 function App() {

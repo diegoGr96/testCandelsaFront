@@ -40,3 +40,7 @@
 .postList__postItem{
   padding: 0;
 }
+
+label{
+  font-size: 1.5rem;
+}

@@ -1,14 +1,14 @@
 export const styledHeartOwner = {
     fontSize: '30px',
-    color: "rgb(150, 150, 150)"
+    color: "#9494947d"
 };
 
 export const styledHeartLike = {
     fontSize: '30px',
-    color: "rgb(255, 0, 50)"
+    color: "#ff0032"
 };
 
 export const styledHeartNoLike = {
     fontSize: '30px',
-    color: "rgb(0, 0, 0)"
+    color: "#000"
 };

@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createFetch } from '../../helpers/createFetch';
 import { apiURL } from '../../env/env';
-import { PostProps } from './PostList';
+import { PostProps } from '../../interfaces/interfaces';
 
 interface SetPostSearchFormProps {
     setLoading: React.Dispatch<React.SetStateAction<boolean>>,

@@ -54,6 +54,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
                     onChange={(e) => {
                         setInputEmail(e.target.value);
                     }}
+                    value={inputEmail}
                     required
                     type="email"
                     className="form-control"
@@ -68,6 +69,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
                     onChange={(e) => {
                         setInputPassword(e.target.value);
                     }}
+                    value={inputPassword}
                     required
                     type="password"
                     className="form-control"
