@@ -14,7 +14,8 @@ export async function createFetch(url: string, method: string, isAuthRoute: bool
     if (isAuthRoute) headers['Authorization'] = 'Bearer ' + localStorage.token;
 
     if (method === 'GET') {
-        const response = await fetch(url);
+        const finalUrl = data === {} ? url : url + '?' + new URLSearchParams(data);
+        const response = await fetch(finalUrl);
         return response;
     }
 

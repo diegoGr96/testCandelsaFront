@@ -1,6 +1,7 @@
 import { ILoginAttempsProps } from "../components/LoginForm";
 import { createFetch } from "../helpers/createFetch";
 import { tokenCredential } from "./useAuthProvider";
+import { apiURL } from '../env/env';
 
 const Auth = {
     signIn(state: React.Dispatch<React.SetStateAction<ILoginAttempsProps>>,
@@ -10,7 +11,7 @@ const Auth = {
             invalidCredentials: false,
             resultAttempt: false
         });
-        const result = createFetch('http://localhost/testcandelsaback/public/api/login', 'POST', false, credentials)
+        const result = createFetch(apiURL+'login', 'POST', false, credentials)
             .then(response => {
                 switch (response.status) {
                     case 400:

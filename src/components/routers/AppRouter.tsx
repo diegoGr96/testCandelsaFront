@@ -1,10 +1,11 @@
 import { Route, Switch, Redirect } from "react-router-dom";
-import { PrivateRoute } from "../Auth/PrivateRoute";
-import { Home } from "./Home";
-import { NavBar } from "./NavBar";
-import { PrivatePage } from "./PrivatePage";
-import { PrivatePage2 } from "./PrivatePage2";
-import { PublicPage } from "./PublicPage";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { Home } from "../Home";
+import { NavBar } from "../NavBar";
+import PostScreen from "../Post/PostScreen";
+import { PrivatePage } from "../PrivatePage";
+import { PublicPage } from "../PublicPage";
+import PostEditScreen from '../Post/PostEditScreen';
 
 //  type DashboardRoutesProps = {
 //      path: string
@@ -18,12 +19,11 @@ const DashboardRoutes = () => {
                 <Switch>
                     {/* Public Routes */}
                     <Route path="/home" exact component={Home} />
-                    {/* <Route path="/login" exact component={LoginScreen} /> */}
+                    <Route path="/post/:postId" component={PostScreen} />
                     <Route path="/public-page" exact component={PublicPage} />
 
                     {/* Private Routes */}
-                    <PrivateRoute path="/private-page" exact component={PrivatePage} />
-                    <PrivateRoute path="/private-page2" exact component={PrivatePage2} />
+                    <Route path='/' component={PrivateRoutes} />
 
                     {/* Default */}
                     <Redirect to="/home" />

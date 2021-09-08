@@ -2,27 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PrivateRoutesList from './PrivateRoutesList';
 
-export type INavBarProps = {
-    
-}
+export type INavBarProps = {}
 
 const NavBar: React.FC<INavBarProps> = () => {
-
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
             <h2 className="navbar-brand">
-            <Link to="/" className="nav-link">
-                Candelsa
-            </Link>
+                <Link to="/" className="nav-link">
+                    Candelsa
+                </Link>
             </h2>
             <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -35,18 +32,15 @@ const NavBar: React.FC<INavBarProps> = () => {
                         </Link>
                     </li>
                     {localStorage.token &&
-                        // <Link to="/private-page" className="nav-link">
-                        //     Private Page
-                        // </Link>
                         <PrivateRoutesList />
                     }
                     <li className="nav-item">
-                    {!localStorage.token ? 
+                        {!localStorage.token ?
                             <Link to="/login" className="nav-link">
                                 Login
                             </Link>
-                        : 
-                        
+                            :
+
                             <Link to="/logout" className="nav-link">
                                 Logout
                             </Link>
@@ -54,7 +48,6 @@ const NavBar: React.FC<INavBarProps> = () => {
                     </li>
                 </ul>
             </div>
-            <h1>{localStorage.token}</h1>
         </nav>
     );
 }
