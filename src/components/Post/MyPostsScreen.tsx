@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { createFetch } from '../../helpers/createFetch';
 import { apiURL } from '../../env/env';
 import PostListItem from './PostListItem';
-import PostSearchForm from './PostSearchForm';
 import { IToken, PostProps } from '../../interfaces/interfaces';
 import jwt_decode from 'jwt-decode';
 

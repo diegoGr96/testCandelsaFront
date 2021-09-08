@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import { styledHeartOwner } from "../../assets/iconsstyles/iconsStyles";
 import { styledHeartNoLike } from "../../assets/iconsstyles/iconsStyles";
 import { styledHeartLike } from "../../assets/iconsstyles/iconsStyles";
 import { PostProps } from "../../interfaces/interfaces";
+import Like from "./Like";
 
 interface PostListItemProps {
     post: PostProps
@@ -31,13 +31,7 @@ const PostListItem: React.FC<PostListItemProps> = ({ post }) => {
                         See full post
                     </Link>
 
-                    <IconContext.Provider
-                        value={{ style: styledHeartNoLike }}>
-                        <div className="mr-2">
-                            <FaHeart className="mr-1" /> 
-                            {likes}
-                        </div>
-                    </IconContext.Provider>
+                    <Like postId={id} likes={likes} />
                 </div>
             </div>
         </div>
