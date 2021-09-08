@@ -3,18 +3,22 @@ import { createFetch } from '../../helpers/createFetch';
 import { apiURL } from '../../env/env';
 import PostListItem from './PostListItem';
 import PostSearchForm from './PostSearchForm';
-import { PostProps } from '../../interfaces/interfaces';
+import { IToken, PostProps } from '../../interfaces/interfaces';
+import jwt_decode from 'jwt-decode';
 
 
-interface PostListProps {}
+interface PostListProps { }
 
-const PostList: React.FC<PostListProps> = () => {
+const MyPostsScreen: React.FC<PostListProps> = () => {
 
     const [loading, setLoading] = useState(true);
     const [postList, setPostList] = useState<PostProps[]>([]);
 
     useEffect(() => {
-        const resultFetch = createFetch(apiURL + 'posts', 'GET', false);
+
+        const token: IToken = jwt_decode(localStorage.token);
+
+        const resultFetch = createFetch(apiURL + `user/${token.sub}/posts`, 'GET', false);
         resultFetch
             .then(response => response.json())
             .then(({ data }) => {
@@ -26,7 +30,7 @@ const PostList: React.FC<PostListProps> = () => {
 
     return (
         <>
-            <PostSearchForm setLoading={setLoading} setPostList={setPostList} />
+            <h1 className="mb-5">My posts</h1>
 
             {loading &&
                 <div className="mt-5 alert alert-info" role="alert">
@@ -37,11 +41,11 @@ const PostList: React.FC<PostListProps> = () => {
                 {postList.length > 0 &&
                     postList.map((post: PostProps) => <PostListItem key={post.id} post={post} />)
                 }
-                
-                { postList.length === 0 && !loading && <h2 className="mt-5">There are no posts.</h2> }
+
+                {postList.length === 0 && !loading && <h2 className="mt-5">You have no posts.</h2>}
             </div>
         </>
     );
 }
 
-export default PostList;
+export default MyPostsScreen;

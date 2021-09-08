@@ -26,6 +26,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     const [inputPassword, setInputPassword] = useState('');
 
     const auth = useAuth();
+    
     const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (!localStorage.token) {

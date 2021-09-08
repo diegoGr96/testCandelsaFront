@@ -31,16 +31,6 @@ const PostSearchForm: React.FC<SetPostSearchFormProps> = ({ setLoading, setPostL
             });
     }
 
-    // useEffect(() => {
-    //     const resultFetch = createFetch(apiURL + 'posts', 'GET', false);
-    //     resultFetch
-    //         .then(response => response.json())
-    //         .then(({ data }) => {
-    //             setPostList(data);
-    //         });
-    // }, []);
-
-
     return (
         <form onSubmit={handleSubmit}>
             <input

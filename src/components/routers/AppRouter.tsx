@@ -3,9 +3,7 @@ import { PrivateRoutes } from "./PrivateRoutes";
 import { Home } from "../Home";
 import { NavBar } from "../NavBar";
 import PostScreen from "../Post/PostScreen";
-import { PrivatePage } from "../PrivatePage";
 import { PublicPage } from "../PublicPage";
-import PostEditScreen from '../Post/PostEditScreen';
 
 //  type DashboardRoutesProps = {
 //      path: string
